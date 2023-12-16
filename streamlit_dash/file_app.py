@@ -54,4 +54,4 @@ plt.hist([x1, x2], bins = 9, color = colors)
 
 # Row C
 st.markdown('### Line chart')
-st.line_chart(seattle_weather, x = 'date', y = plot_data, height = plot_height)
+st.line_chart(data, x = 'date', y = plot_data, height = plot_height)
