@@ -13,6 +13,8 @@ st.sidebar.header('Dashboard `Mtech`')
 st.sidebar.subheader('Heat map parameter')
 time_hist_color = st.sidebar.selectbox('Color by', ('М', 'Ж')) 
 data1 = pd.read_csv('https://github.com/AfanasiyFoma/mtech/blob/main/streamlit_dash/file1.csv')
+link for requirements.txt
+https://github.com/AfanasiyFoma/mtech/blob/main/streamlit_dash/requirements.txt
 
                    
 st.markdown('### Распредение по полу')
