@@ -2,11 +2,11 @@ import streamlit as st
 import pandas as pd
 
 
-st.title("Hello GeeksForGeeks !!!")
+st.title("Hello World !!!")
 
 
-data1 = pd.read_csv('C:/openData/Mtech/2/file1.csv')
+df = pd.read_csv('https://github.com/AfanasiyFoma/mtech/blob/main/streamlit_dash/file1.csv')
 
-print(data1.head())
+print(df.head())
 
-st.bar_chart(data=data1.groupby('Пол')['Возраст'], x='Пол', y='Возраст', use_container_width=True)
+st.bar_chart(data=df.groupby('Пол')['Возраст'], x='Пол', y='Возраст', use_container_width=True)
