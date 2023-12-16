@@ -11,52 +11,46 @@ with open('style.css') as f:
 st.sidebar.header('Dashboard `Mtech`')
 
 st.sidebar.subheader('Heat map parameter')
-time_hist_color = st.sidebar.selectbox('Color by', ('temp_min', 'temp_max')) 
+time_hist_color = st.sidebar.selectbox('Color by', ('М', 'Ж')) 
 
-st.sidebar.subheader('Donut chart parameter')
-donut_theta = st.sidebar.selectbox('Select data', ('q2', 'q3'))
+
 
 st.sidebar.subheader('Line chart parameters')
 plot_data = st.sidebar.multiselect('Select data', ['temp_min', 'temp_max'], ['temp_min', 'temp_max'])
-plot_height = st.sidebar.slider('Specify plot height', 200, 500, 250)
+
 
 st.sidebar.markdown('''
 ---
 ''')
 
 
-# Row A
-st.markdown('### Metrics')
-col1, col2, col3 = st.columns(3)
-col1.metric("Temperature", "70 °F", "1.2 °F")
-col2.metric("Wind", "9 mph", "-8%")
-col3.metric("Humidity", "86%", "4%")
+
 
 # Row B
-seattle_weather = pd.read_csv('https://github.com/AfanasiyFoma/mtech/blob/main/streamlit_dash/file1.csv)
-#stocks = pd.read_csv('https://raw.githubusercontent.com/dataprofessor/data/master/stocks_toy.csv')
+data = pd.read_csv('https://github.com/AfanasiyFoma/mtech/blob/main/streamlit_dash/file1.csv)
 
 c1, c2 = st.columns((7,3))
 with c1:
-    st.markdown('### Heatmap')
+    st.markdown('### Распредение по полу')
     plost.time_hist(
-    data=seattle_weather,
+    data=data,
     date='date',
-    x_unit='week',
-    y_unit='day',
+    x_unit='Пол',
+    y_unit='Количество в категории',
     color=time_hist_color,
     aggregate='median',
     legend=None,
     height=345,
     use_container_width=True)
 with c2:
-    st.markdown('### Donut chart')
-    plost.donut_chart(
-        data=stocks,
-        theta=donut_theta,
-        color='company',
-        legend='bottom', 
-        use_container_width=True)
+    st.bar_chart(data=seattle_weather, *, x='Дни болезни', y='Количество случаев', use_container_width=True)
+    x1 = list(data[data['Пол'] == 'М']['Количество больничных дней'])
+    x2 = list(data[data['Пол'] == 'Ж']['Количество больничных дней'])
+
+
+plt.hist([x1, x2], bins = 9, color = colors)
+
+
 
 # Row C
 st.markdown('### Line chart')
