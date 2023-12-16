@@ -16,4 +16,4 @@ data = pd.read_csv('https://github.com/AfanasiyFoma/mtech/blob/main/streamlit_da
 
                    
 st.markdown('### Распредение по полу')
-st.bar_chart(data=seattle_weather, *, x='Дни болезни', y='Количество случаев', use_container_width=True)
+st.bar_chart(data=data, x='Дни болезни', y='Количество случаев', use_container_width=True)
